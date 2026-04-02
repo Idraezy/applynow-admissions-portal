@@ -61,11 +61,16 @@ function Apply() {
   const prevStep = () => setStep(step - 1);
 
   const handleSubmit = () => {
-    if (validateStep()) {
-      alert("Application Submitted Successfully!");
-      console.log(formData);
-    }
-  };
+  if (validateStep()) {
+    // Save to localStorage
+    localStorage.setItem("application", JSON.stringify(formData));
+
+    alert("Application Submitted Successfully!");
+
+    // Redirect to dashboard
+    window.location.href = "/dashboard";
+  }
+};
 
   return (
     <div style={{ padding: "20px" }}>
