@@ -18,7 +18,9 @@ function Dashboard() {
     <div style={{ padding: "20px" }}>
       <h2>Application Dashboard</h2>
 
-      <p><strong>Status:</strong> Pending</p>
+      <p><strong>Status:</strong>{" "}
+       {localStorage.getItem("status") || "Pending"}
+      </p>
 
       <h3>Personal Info</h3>
       <p>Name: {data.name}</p>
