@@ -6,53 +6,73 @@ function Admin() {
 
   useEffect(() => {
     const savedData = localStorage.getItem("application");
-    const savedStatus = localStorage.getItem("status");
-
     if (savedData) {
-      setData(JSON.parse(savedData));
+      const parsed = JSON.parse(savedData);
+      setData(parsed);
+
+      // 🤖 AI Logic for Likely Approved
+      if (parsed.gpa > 3.5 && status === "Pending") {
+        setStatus("Likely Approved");
+        localStorage.setItem("status", "Likely Approved");
+      }
     }
 
-    if (savedStatus) {
-      setStatus(savedStatus);
-    }
+    const savedStatus = localStorage.getItem("status");
+    if (savedStatus) setStatus(savedStatus);
   }, []);
 
   const handleApprove = () => {
-    localStorage.setItem("status", "Approved");
     setStatus("Approved");
+    localStorage.setItem("status", "Approved");
   };
 
   const handleReject = () => {
-    localStorage.setItem("status", "Rejected");
     setStatus("Rejected");
+    localStorage.setItem("status", "Rejected");
   };
 
-  if (!data) {
-    return <h2>No Application Found</h2>;
-  }
+  if (!data)
+    return <h2 className="text-center mt-10">No Application Found</h2>;
+
+  // Map status to Tailwind color classes
+  const statusColor = {
+    Approved: "text-green-600",
+    Rejected: "text-red-600",
+    "Likely Approved": "text-blue-600",
+    Pending: "text-yellow-600",
+  }[status];
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Admin Panel</h2>
+    <div className="p-6">
+      <div className="max-w-md mx-auto bg-white shadow-lg rounded-xl p-6">
+        <h2 className="text-xl font-bold mb-4">Admin Panel</h2>
 
-      <p><strong>Current Status:</strong> {status}</p>
+        <p className="mb-3">
+          <strong>Status:</strong>{" "}
+          <span className={`${statusColor} font-bold`}>{status}</span>
+        </p>
 
-      <h3>Applicant Info</h3>
-      <p>Name: {data.name}</p>
-      <p>Email: {data.email}</p>
-      <p>School: {data.school}</p>
-      <p>GPA: {data.gpa}</p>
-      <p>Parent: {data.parent}</p>
+        <p>Name: {data.name}</p>
+        <p>Email: {data.email}</p>
+        <p>School: {data.school}</p>
+        <p>GPA: {data.gpa}</p>
 
-      <br />
+        <div className="flex gap-3 mt-4">
+          <button
+            onClick={handleApprove}
+            className="bg-green-600 text-white px-4 py-2 rounded"
+          >
+            Approve
+          </button>
 
-      <button onClick={handleApprove} style={{ marginRight: "10px" }}>
-        Approve
-      </button>
-
-      <button onClick={handleReject}>
-        Reject
-      </button>
+          <button
+            onClick={handleReject}
+            className="bg-red-600 text-white px-4 py-2 rounded"
+          >
+            Reject
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

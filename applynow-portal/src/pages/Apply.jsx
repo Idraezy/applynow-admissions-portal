@@ -20,26 +20,21 @@ function Apply() {
     });
   };
 
-  // 🔍 VALIDATION FUNCTION
   const validateStep = () => {
     let newErrors = {};
 
     if (step === 1) {
       if (!formData.name) newErrors.name = "Name is required";
-      if (!formData.email) {
-        newErrors.email = "Email is required";
-      } else if (!formData.email.includes("@")) {
+      if (!formData.email) newErrors.email = "Email is required";
+      else if (!formData.email.includes("@"))
         newErrors.email = "Invalid email";
-      }
     }
 
     if (step === 2) {
       if (!formData.school) newErrors.school = "School is required";
-      if (!formData.gpa) {
-        newErrors.gpa = "GPA is required";
-      } else if (isNaN(formData.gpa) || formData.gpa > 5) {
+      if (!formData.gpa) newErrors.gpa = "GPA is required";
+      else if (isNaN(formData.gpa) || formData.gpa > 5)
         newErrors.gpa = "Enter valid GPA (0–5)";
-      }
     }
 
     if (step === 3) {
@@ -48,91 +43,133 @@ function Apply() {
     }
 
     setErrors(newErrors);
-
     return Object.keys(newErrors).length === 0;
   };
 
   const nextStep = () => {
-    if (validateStep()) {
-      setStep(step + 1);
-    }
+    if (validateStep()) setStep(step + 1);
   };
 
   const prevStep = () => setStep(step - 1);
 
   const handleSubmit = () => {
-  if (validateStep()) {
-    // Save to localStorage
-    localStorage.setItem("application", JSON.stringify(formData));
-
-    alert("Application Submitted Successfully!");
-
-    // Redirect to dashboard
-    window.location.href = "/dashboard";
-  }
-};
+    if (validateStep()) {
+      localStorage.setItem("application", JSON.stringify(formData));
+      alert("Application Submitted!");
+      window.location.href = "/dashboard";
+    }
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Application Form</h2>
-      <p>Step {step} of 3</p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          ApplyNow Portal
+        </h2>
 
-      {/* STEP 1 */}
-      {step === 1 && (
-        <div>
-          <h3>Personal Information</h3>
+        <p className="text-center text-gray-500 mb-4">
+          Step {step} of 3
+        </p>
 
-          <input name="name" placeholder="Name" onChange={handleChange} />
-          {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+        {step === 1 && (
+          <>
+            <input
+              name="name"
+              placeholder="Name"
+              onChange={handleChange}
+              className="w-full p-2 border rounded mb-2"
+            />
+            {errors.name && (
+              <p className="text-red-500">{errors.name}</p>
+            )}
 
-          <br />
+            <input
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              className="w-full p-2 border rounded mb-2"
+            />
+            {errors.email && (
+              <p className="text-red-500">{errors.email}</p>
+            )}
 
-          <input name="email" placeholder="Email" onChange={handleChange} />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+            <button
+              onClick={nextStep}
+              className="w-full bg-blue-600 text-white p-2 rounded mt-3"
+            >
+              Next
+            </button>
+          </>
+        )}
 
-          <br />
-          <button onClick={nextStep}>Next</button>
-        </div>
-      )}
+        {step === 2 && (
+          <>
+            <input
+              name="school"
+              placeholder="School"
+              onChange={handleChange}
+              className="w-full p-2 border rounded mb-2"
+            />
+            {errors.school && (
+              <p className="text-red-500">{errors.school}</p>
+            )}
 
-      {/* STEP 2 */}
-      {step === 2 && (
-        <div>
-          <h3>Academic Information</h3>
+            <input
+              name="gpa"
+              placeholder="GPA"
+              onChange={handleChange}
+              className="w-full p-2 border rounded mb-2"
+            />
+            {errors.gpa && (
+              <p className="text-red-500">{errors.gpa}</p>
+            )}
 
-          <input name="school" placeholder="School" onChange={handleChange} />
-          {errors.school && <p style={{ color: "red" }}>{errors.school}</p>}
+            <div className="flex justify-between mt-3">
+              <button
+                onClick={prevStep}
+                className="bg-gray-400 text-white px-4 py-2 rounded"
+              >
+                Back
+              </button>
+              <button
+                onClick={nextStep}
+                className="bg-blue-600 text-white px-4 py-2 rounded"
+              >
+                Next
+              </button>
+            </div>
+          </>
+        )}
 
-          <br />
+        {step === 3 && (
+          <>
+            <input
+              name="parent"
+              placeholder="Parent Name"
+              onChange={handleChange}
+              className="w-full p-2 border rounded mb-2"
+            />
+            {errors.parent && (
+              <p className="text-red-500">{errors.parent}</p>
+            )}
 
-          <input name="gpa" placeholder="GPA" onChange={handleChange} />
-          {errors.gpa && <p style={{ color: "red" }}>{errors.gpa}</p>}
-
-          <br />
-
-          <button onClick={prevStep}>Back</button>
-          <button onClick={nextStep}>Next</button>
-        </div>
-      )}
-
-      {/* STEP 3 */}
-      {step === 3 && (
-        <div>
-          <h3>Guardian Information</h3>
-
-          <input
-            name="parent"
-            placeholder="Parent Name"
-            onChange={handleChange}
-          />
-          {errors.parent && <p style={{ color: "red" }}>{errors.parent}</p>}
-
-          <br />
-
-          <button onClick={prevStep}>Back</button>
-          <button onClick={handleSubmit}>Submit</button>
-        </div>
-      )}
+            <div className="flex justify-between mt-3">
+              <button
+                onClick={prevStep}
+                className="bg-gray-400 text-white px-4 py-2 rounded"
+              >
+                Back
+              </button>
+              <button
+                onClick={handleSubmit}
+                className="bg-green-600 text-white px-4 py-2 rounded"
+              >
+                Submit
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }
