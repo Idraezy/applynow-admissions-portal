@@ -53,12 +53,28 @@ function Apply() {
   const prevStep = () => setStep(step - 1);
 
   const handleSubmit = () => {
-    if (validateStep()) {
-      localStorage.setItem("application", JSON.stringify(formData));
-      alert("Application Submitted!");
+  if (validateStep()) {
+    // Save main application
+    localStorage.setItem("application", JSON.stringify(formData));
+
+    // Save history
+    const existingHistory =
+      JSON.parse(localStorage.getItem("history")) || [];
+
+    const newEntry = {
+      date: new Date().toLocaleString(),
+      status: "Pending",
+    };
+
+    existingHistory.push(newEntry);
+    localStorage.setItem("history", JSON.stringify(existingHistory));
+
+    // Loading simulation
+    setTimeout(() => {
       window.location.href = "/dashboard";
-    }
-  };
+    }, 1000);
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
