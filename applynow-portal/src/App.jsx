@@ -12,6 +12,7 @@ function App() {
         ? "bg-blue-600 text-white"
         : "text-gray-600 hover:text-blue-600"
     }`;
+    
 
   return (
     <div className="min-h-screen bg-gray-100">
