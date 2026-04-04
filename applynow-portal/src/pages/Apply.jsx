@@ -34,7 +34,7 @@ function Apply() {
       if (!formData.school) newErrors.school = "School is required";
       if (!formData.gpa) newErrors.gpa = "GPA is required";
       else if (isNaN(formData.gpa) || formData.gpa > 5)
-        newErrors.gpa = "Enter valid GPA (0–5)";
+        newErrors.gpa = "Enter valid GPA (0-5)";
     }
 
     if (step === 3) {
@@ -57,11 +57,13 @@ function Apply() {
     // Save main application
     localStorage.setItem("application", JSON.stringify(formData));
 
-    // Save history
+    // Get history
     const existingHistory =
       JSON.parse(localStorage.getItem("history")) || [];
 
+    
     const newEntry = {
+      ...formData, 
       date: new Date().toLocaleString(),
       status: "Pending",
     };
@@ -69,7 +71,6 @@ function Apply() {
     existingHistory.push(newEntry);
     localStorage.setItem("history", JSON.stringify(existingHistory));
 
-    // Loading simulation
     setTimeout(() => {
       window.location.href = "/dashboard";
     }, 1000);

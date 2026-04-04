@@ -1,16 +1,47 @@
-# React + Vite
+# ApplyNow Portal 🎓
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Project Overview
+ApplyNow Portal is a multi-step admission system built with React and Tailwind CSS. It allows students to apply, track their application status, and enables admins to review and approve/reject applications.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- Multi-step application form (3 steps)
+- Form validation for all fields
+- Dashboard displaying application details and status
+- Admin panel for approving/rejecting applications
+- AI-based status prediction:
+  - GPA > 3.5 → Likely Approved
+- Application history tracking
+- Clickable history with full details
+- Loading states for better UX
+- Responsive and modern UI (Tailwind CSS)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js
+- Tailwind CSS
+- React Router
+- LocalStorage (for data persistence)
+
+---
+
+## 📊 Application Flow
+
+1. User fills application form
+2. Data is saved to localStorage
+3. Dashboard displays current status
+4. Admin reviews application
+5. Status updates reflect in dashboard and history
+
+---
+
+## 🤖 AI Logic
+
+```js
+if (data.gpa > 3.5) {
+  setStatus("Likely Approved");
+}

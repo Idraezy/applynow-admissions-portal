@@ -4,7 +4,7 @@ function Dashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [history, setHistory] = useState([]);
-  const [selected, setSelected] = useState(null); // ✅ NEW
+  const [selected, setSelected] = useState(null); 
 
   const status = localStorage.getItem("status") || "Pending";
 
@@ -48,7 +48,7 @@ function Dashboard() {
         <div className="bg-white p-6 rounded-2xl shadow flex justify-between items-center">
           <div>
             <h2 className="text-2xl font-bold">Dashboard</h2>
-            <p className="text-gray-500">Welcome back 👋</p>
+            <p className="text-gray-500">Welcome back!</p>
           </div>
 
           <span
@@ -76,7 +76,7 @@ function Dashboard() {
         {/* HISTORY */}
         <div className="grid md:grid-cols-2 gap-6">
 
-          {/* HISTORY LIST */}
+          
           <div className="bg-white p-6 rounded-2xl shadow">
             <h3 className="text-lg font-semibold mb-4">
               Application History

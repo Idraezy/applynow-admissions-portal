@@ -14,7 +14,7 @@ function Admin() {
         const parsed = JSON.parse(savedData);
         setData(parsed);
 
-        // ✅ AI Logic (FIXED)
+      
         if (!savedStatus && parsed.gpa > 3.5) {
           setStatus("Likely Approved");
           localStorage.setItem("status", "Likely Approved");
@@ -27,15 +27,29 @@ function Admin() {
     }, 800);
   }, []);
 
-  const handleApprove = () => {
-    setStatus("Approved");
-    localStorage.setItem("status", "Approved");
-  };
+  const updateHistoryStatus = (newStatus) => {
+  const history = JSON.parse(localStorage.getItem("history")) || [];
 
-  const handleReject = () => {
-    setStatus("Rejected");
-    localStorage.setItem("status", "Rejected");
-  };
+  // Update the most recent entry's status
+  if (history.length > 0) {
+    history[history.length - 1].status = newStatus;
+    localStorage.setItem("history", JSON.stringify(history));
+  }
+};
+
+const handleApprove = () => {
+  setStatus("Approved");
+  localStorage.setItem("status", "Approved");
+
+  updateHistoryStatus("Approved"); 
+};
+
+const handleReject = () => {
+  setStatus("Rejected");
+  localStorage.setItem("status", "Rejected");
+
+  updateHistoryStatus("Rejected"); 
+};
 
   if (loading) {
     return (
@@ -55,7 +69,7 @@ function Admin() {
     );
   }
 
-  // ✅ Better badge style
+  
   const statusColor = {
     Approved: "bg-green-100 text-green-700",
     Rejected: "bg-red-100 text-red-700",
@@ -90,7 +104,7 @@ function Admin() {
           </div>
         </div>
 
-        {/* ACTIONS */}
+        
         <div className="bg-white p-6 rounded-2xl shadow flex gap-4">
           <button
             onClick={handleApprove}
