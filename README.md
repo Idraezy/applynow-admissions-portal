@@ -60,15 +60,6 @@ Palette Link: [View Palette on Coolors](https://coolors.co/f3f4f6-0065ea-d3fde8-
 
 ---
 
-## 🤖 AI Logic
-
-```js
-if (data.gpa > 3.5) {
-  setStatus("Likely Approved");
-}
-
----
-
 ## 📊 Presentation
 
 [View Presentation](./docs/presentation.pdf)
@@ -77,4 +68,13 @@ if (data.gpa > 3.5) {
 
 ## 🌐 Live Demo
 
-https://applynow-admissions-portal.vercel.app/
+Check the live project here:[ApplyNow Portal on Vercel](https://applynow-admissions-portal.vercel.app/)
+
+---
+
+## 🤖 AI Logic
+
+```js
+if (data.gpa > 3.5) {
+  setStatus("Likely Approved");
+}
