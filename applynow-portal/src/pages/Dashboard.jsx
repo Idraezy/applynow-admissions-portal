@@ -48,7 +48,7 @@ function Dashboard() {
         <div className="bg-white p-6 rounded-2xl shadow flex justify-between items-center">
           <div>
             <h2 className="text-2xl font-bold">Dashboard</h2>
-            <p className="text-gray-500">Welcome back!</p>
+            <p className="text-gray-500">Welcome back👋</p>
           </div>
 
           <span
