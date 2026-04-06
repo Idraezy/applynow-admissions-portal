@@ -34,6 +34,10 @@ The system simulates a real-world admission workflow with validation, state mana
 - Warning: #F59E0B (Yellow)  
 - Background: #F3F4F6 (Gray)
 
+
+Palette Link: [View Palette on Coolors](https://coolors.co/f3f4f6-0065ea-d3fde8-008243-00a652-f40000-f59e0b)
+
+
 ---
 
 ## 🛠️ Tech Stack
@@ -53,6 +57,18 @@ The system simulates a real-world admission workflow with validation, state mana
 4. Admin reviews application in Admin Panel  
 5. Status is updated (Approved / Rejected / Likely Approved)  
 6. Changes reflect instantly in Dashboard and History  
+
+---
+
+## 📊 Presentation
+
+[View Presentation](./docs/presentation.pdf)
+
+---
+
+## 🌐 Live Demo
+
+Check the live project here:[ApplyNow Portal on Vercel](https://applynow-admissions-portal.vercel.app/)
 
 ---
 
