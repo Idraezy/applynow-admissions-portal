@@ -60,21 +60,21 @@ Palette Link: [View Palette on Coolors](https://coolors.co/f3f4f6-0065ea-d3fde8-
 
 ---
 
+## 📊 Presentation
+
+You can view the project presentation here: [View Presentation](./docs/presentation.pdf)
+
+---
+
+## 🌐 Live Demo
+
+Check the live project here: [ApplyNow Portal on Vercel](https://applynow-admissions-portal.vercel.app/)
+
+---
+
 ## 🤖 AI Logic
 
 ```js
 if (data.gpa > 3.5) {
   setStatus("Likely Approved");
 }
-
----
-
-## 📊 Presentation
-
-[View Presentation](./docs/presentation.pdf)
-
----
-
-## 🌐 Live Demo
-
-https://applynow-admissions-portal.vercel.app/
