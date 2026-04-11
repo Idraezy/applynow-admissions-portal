@@ -64,6 +64,7 @@ Palette Link: [View Palette on Coolors](https://coolors.co/f3f4f6-0065ea-d3fde8-
 
 You can view the project presentation here: [View Presentation](./docs/presentation.pdf)
 
+
 ---
 
 ## 🌐 Live Demo
